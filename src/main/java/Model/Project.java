@@ -1,21 +1,20 @@
 package Model;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Date;
 
 public class Project {
     private int pId;
     private String pName;
     private String pDescription;
-    private LocalDate pStartdate;
-    private LocalDate pEndDate;
+    private Date pStartdate;
+    private Date pEndDate;
     private double budget;
 
+    // Constructeurs, getters et setters
 
-    public Project() {
-    }
+    public Project() {}
 
-    public Project(int pId,  String pName,String pDescription, LocalDate pStartdate, LocalDate pEndDate, double budget) {
+    public Project(int pId, String pName, String pDescription, Date pStartdate, Date pEndDate, double budget) {
         this.pId = pId;
         this.pName = pName;
         this.pDescription = pDescription;
@@ -32,14 +31,6 @@ public class Project {
         this.pId = pId;
     }
 
-    public String getpDescription() {
-        return pDescription;
-    }
-
-    public void setpDescription(String pDescription) {
-        this.pDescription = pDescription;
-    }
-
     public String getpName() {
         return pName;
     }
@@ -48,19 +39,27 @@ public class Project {
         this.pName = pName;
     }
 
-    public LocalDate getpStartdate() {
+    public String getpDescription() {
+        return pDescription;
+    }
+
+    public void setpDescription(String pDescription) {
+        this.pDescription = pDescription;
+    }
+
+    public Date getpStartdate() {
         return pStartdate;
     }
 
-    public void setpStartdate(LocalDate pStartdate) {
+    public void setpStartdate(Date pStartdate) {
         this.pStartdate = pStartdate;
     }
 
-    public LocalDate getpEndDate() {
+    public Date getpEndDate() {
         return pEndDate;
     }
 
-    public void setpEndDate(LocalDate pEndDate) {
+    public void setpEndDate(Date pEndDate) {
         this.pEndDate = pEndDate;
     }
 

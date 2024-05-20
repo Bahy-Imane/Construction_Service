@@ -1,25 +1,29 @@
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Task {
     private int tId;
     private String tDescription;
-    private Date dateDebut;
     private Date tStartdate;
     private Date tEndDate;
+    private String statut;
+    private String resources;
     private int pId;
 
 
-    public Task() {
-    }
 
-    public Task(int tId, String tDescription, Date dateDebut, Date tStartdate, Date tEndDate, int pId) {
+    public Task() {}
+
+
+
+    public Task(int tId, String tDescription, Date tStartdate, Date tEndDate, String statut, String resources, int pId) {
         this.tId = tId;
         this.tDescription = tDescription;
-        this.dateDebut = dateDebut;
         this.tStartdate = tStartdate;
         this.tEndDate = tEndDate;
+        this.statut = statut;
+        this.resources = resources;
         this.pId = pId;
     }
 
@@ -39,14 +43,6 @@ public class Task {
         this.tDescription = tDescription;
     }
 
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(Date dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
     public Date gettStartdate() {
         return tStartdate;
     }
@@ -63,11 +59,40 @@ public class Task {
         this.tEndDate = tEndDate;
     }
 
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
+    public String getResources() {
+        return resources;
+    }
+
+    public void setResources(String resources) {
+        this.resources = resources;
+    }
+
     public int getpId() {
         return pId;
     }
 
     public void setpId(int pId) {
         this.pId = pId;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "tId=" + tId +
+                ", tDescription='" + tDescription + '\'' +
+                ", tStartdate=" + tStartdate +
+                ", tEndDate=" + tEndDate +
+                ", statut='" + statut + '\'' +
+                ", resources='" + resources + '\'' +
+                ", pId=" + pId +
+                '}';
     }
 }

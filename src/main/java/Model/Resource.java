@@ -2,21 +2,21 @@ package Model;
 
 public class Resource {
     private int rId;
-    private String r_Name;
+    private String rName;
     private String rType;
-    private int Quantity;
+    private int quantity;
     private String provider;
     private int tId;
 
 
-    public Resource() {
-    }
 
-    public Resource(int rId, String r_Name, String rType, int quantity, String provider, int tId) {
+    public Resource() {}
+
+    public Resource(int rId, String rName, String rType, int quantity, String provider, int tId) {
         this.rId = rId;
-        this.r_Name = r_Name;
+        this.rName = rName;
         this.rType = rType;
-        Quantity = quantity;
+        this.quantity = quantity;
         this.provider = provider;
         this.tId = tId;
     }
@@ -29,12 +29,12 @@ public class Resource {
         this.rId = rId;
     }
 
-    public String getR_Name() {
-        return r_Name;
+    public String getrName() {
+        return rName;
     }
 
-    public void setR_Name(String r_Name) {
-        this.r_Name = r_Name;
+    public void setrName(String rName) {
+        this.rName = rName;
     }
 
     public String getrType() {
@@ -46,11 +46,11 @@ public class Resource {
     }
 
     public int getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(int quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 
     public String getProvider() {
