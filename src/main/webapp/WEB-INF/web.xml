@@ -3,4 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
+
+    <servlet>
+        <servlet-name>DisplayProjectServlet</servlet-name>
+        <servlet-class>Servlet.Projects.DisplayProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayProjectServlet</servlet-name>
+        <url-pattern>/listProject</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <servlet-class>Servlet.Projects.AddProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProjectServlet</servlet-name>
+        <url-pattern>/addProject</url-pattern>
+    </servlet-mapping>
 </web-app>

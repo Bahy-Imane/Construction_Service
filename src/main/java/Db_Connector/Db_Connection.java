@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Db_Connection {
 
-    public static String jdbcURL = "jdbc:mysql://localhost:3308/Construction_db";
+    public static String jdbcURL = "jdbc:mysql://localhost:3308/construction_db";
     public static String jdbcUserName = "Bahy Imane";
     public static String jdbcPassword = "";
     public static String jdbcDriver = "com.mysql.cj.jdbc.Driver";
