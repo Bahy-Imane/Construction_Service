@@ -6,13 +6,14 @@
 
 
     <servlet>
-        <servlet-name>DisplayProjectServlet</servlet-name>
-        <servlet-class>Servlet.Projects.DisplayProjectServlet</servlet-class>
+        <servlet-name>ListProjectsServlet</servlet-name>
+        <servlet-class>Servlet.Projects.ListProjectsServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DisplayProjectServlet</servlet-name>
+        <servlet-name>ListProjectsServlet</servlet-name>
         <url-pattern>/listProject</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>AddProjectServlet</servlet-name>
@@ -21,5 +22,45 @@
     <servlet-mapping>
         <servlet-name>AddProjectServlet</servlet-name>
         <url-pattern>/addProject</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ListTasksServlet</servlet-name>
+        <servlet-class>Servlet.Tasks.ListTasksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListTasksServlet</servlet-name>
+        <url-pattern>/listTask</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AddTaskServlet</servlet-name>
+        <servlet-class>Servlet.Tasks.AddTaskServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTaskServlet</servlet-name>
+        <url-pattern>/addTask</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ListResourcesServlet</servlet-name>
+        <servlet-class>Servlet.Resources.ListResourcesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListResourcesServlet</servlet-name>
+        <url-pattern>/listResource</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AddResourceServlet</servlet-name>
+        <servlet-class>Servlet.Resources.AddResourceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddResourceServlet</servlet-name>
+        <url-pattern>/addResource</url-pattern>
     </servlet-mapping>
 </web-app>

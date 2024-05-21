@@ -5,8 +5,8 @@ import java.sql.Date;
 public class Task {
     private int tId;
     private String tDescription;
-    private Date tStartdate;
-    private Date tEndDate;
+    private String tStartdate;
+    private String tEndDate;
     private String statut;
     private String resources;
     private int pId;
@@ -16,8 +16,7 @@ public class Task {
     public Task() {}
 
 
-
-    public Task(int tId, String tDescription, Date tStartdate, Date tEndDate, String statut, String resources, int pId) {
+    public Task(int tId, String tDescription, String tStartdate, String tEndDate, String statut, String resources, int pId) {
         this.tId = tId;
         this.tDescription = tDescription;
         this.tStartdate = tStartdate;
@@ -43,19 +42,19 @@ public class Task {
         this.tDescription = tDescription;
     }
 
-    public Date gettStartdate() {
+    public String gettStartdate() {
         return tStartdate;
     }
 
-    public void settStartdate(Date tStartdate) {
+    public void settStartdate(String tStartdate) {
         this.tStartdate = tStartdate;
     }
 
-    public Date gettEndDate() {
+    public String gettEndDate() {
         return tEndDate;
     }
 
-    public void settEndDate(Date tEndDate) {
+    public void settEndDate(String tEndDate) {
         this.tEndDate = tEndDate;
     }
 

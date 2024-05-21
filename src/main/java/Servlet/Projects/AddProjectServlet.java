@@ -27,11 +27,10 @@ public class AddProjectServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String name = request.getParameter("pName");
-        String description = request.getParameter("pDescription");
-        Date startDate = Date.valueOf(request.getParameter("pStartdate"));
-        Date endDate = Date.valueOf(request.getParameter("pEndDate"));
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        Date startDate = Date.valueOf(request.getParameter("startDate"));
+        Date endDate = Date.valueOf(request.getParameter("endDate"));
         double budget = Double.parseDouble(request.getParameter("budget"));
 
         Project project = new Project();
@@ -43,8 +42,7 @@ public class AddProjectServlet extends HttpServlet {
 
         try {
             projectDao.addProject(project);
-            request.setAttribute("listProjects", projectDao.selectAllProjects());
-            request.getRequestDispatcher("/WEB-INF//Projects/listProjects.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/Projects/listProjects");
         } catch (SQLException e) {
             throw new ServletException("Error adding project", e);
         }
