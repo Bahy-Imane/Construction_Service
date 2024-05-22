@@ -8,8 +8,6 @@ public class Resource {
     private String provider;
     private int tId;
 
-
-
     public Resource() {}
 
     public Resource(int rId, String rName, String rType, int quantity, String provider, int tId) {
@@ -19,6 +17,14 @@ public class Resource {
         this.quantity = quantity;
         this.provider = provider;
         this.tId = tId;
+    }
+
+    public Resource(String rName, String rType, int quantity, String provider, int rId) {
+        this.rName = rName;
+        this.rType = rType;
+        this.quantity = quantity;
+        this.provider = provider;
+        this.rId = rId;
     }
 
     public int getrId() {

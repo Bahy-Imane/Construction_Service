@@ -48,6 +48,7 @@
 <div class="form-container">
     <h2>Mettre à jour une Tâche</h2>
     <form action="${pageContext.request.contextPath}/UpdateTaskServlet" method="POST">
+        <input type="hidden" name="projectId" value="${projectId}">
         <input type="hidden" name="tId" value="${task.tId}">
         <div class="form-group">
             <label for="description">Description de la Tâche:</label>

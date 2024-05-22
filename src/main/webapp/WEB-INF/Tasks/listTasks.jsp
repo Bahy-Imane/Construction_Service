@@ -72,9 +72,8 @@
 <body>
 
 <div class="navbar">
-    <a href="${pageContext.request.contextPath}/Projects/listProjects">Projects</a>
-    <a href="${pageContext.request.contextPath}/AddTaskServlet">Add Task</a>
-
+    <a href="${pageContext.request.contextPath}/listProject">Projects</a>
+    <a href="${pageContext.request.contextPath}/AddTaskServlet?projectId=${projectId}">Add Task</a>
 </div>
 
 <h2>Liste des Tâches</h2>
@@ -89,9 +88,9 @@
             <p><strong>Statut:</strong> ${task.statut}</p>
             <p><strong>Ressources:</strong> ${task.resources}</p>
             <div class="button-container">
-                <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}" class="update-button">Update</a>
-                <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}" class="delete-button">Delete</a>
-                <a href="${pageContext.request.contextPath}/SeeAllResourcesServlet?taskId=${task.tId}" class="resources-button">See All Resources</a>
+                <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">Update</a>
+                <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">Delete</a>
+                <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${task.tId}" class="resources-button">See All Resources</a>
             </div>
         </div>
     </c:forEach>

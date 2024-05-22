@@ -23,9 +23,11 @@ public class ListTasksServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
         try {
-            List<Task> tasks = taskDao.selectAllTasks();
+            List<Task> tasks = taskDao.selectAllTasks(projectId);
             request.setAttribute("tasks", tasks);
+            request.setAttribute("projectId", projectId);
             request.getRequestDispatcher("/WEB-INF/Tasks/listTasks.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new ServletException("Error retrieving tasks", e);

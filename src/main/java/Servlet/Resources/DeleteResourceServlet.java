@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/Resources/DeleteResourceServlet")
+@WebServlet("/DeleteResourceServlet")
 public class DeleteResourceServlet extends HttpServlet {
     private ResourceDaoImp resourceDao;
 
@@ -21,6 +21,7 @@ public class DeleteResourceServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int taskId = Integer.parseInt(request.getParameter("taskId"));
         int resourceId = Integer.parseInt(request.getParameter("resourceId"));
 
         try {
@@ -29,6 +30,6 @@ public class DeleteResourceServlet extends HttpServlet {
             throw new ServletException("Error deleting resource", e);
         }
 
-        response.sendRedirect(request.getContextPath() + "/Resources/ListResourcesServlet");
+        response.sendRedirect(request.getContextPath() + "/ListResourcesServlet?taskId=" + taskId);
     }
 }

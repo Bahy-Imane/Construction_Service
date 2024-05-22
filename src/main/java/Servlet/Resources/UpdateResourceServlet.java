@@ -22,10 +22,13 @@ public class UpdateResourceServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("resourceId"));
+        int taskId = Integer.parseInt(request.getParameter("taskId"));
+        int resourceId = Integer.parseInt(request.getParameter("resourceId"));
         try {
-            Resource resource = resourceDao.selectResourceById(id);
+            Resource resource = resourceDao.selectResourceById(resourceId);
             request.setAttribute("resource", resource);
+            request.setAttribute("resourceId", resourceId);
+            request.setAttribute("taskId", taskId);
             request.getRequestDispatcher("/WEB-INF/Resources/updateResource.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new ServletException("Error retrieving resource", e);
@@ -34,18 +37,18 @@ public class UpdateResourceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int rId = Integer.parseInt(request.getParameter("rId"));
+        int taskId = Integer.parseInt(request.getParameter("taskId"));
         String rName = request.getParameter("rName");
         String rType = request.getParameter("rType");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String provider = request.getParameter("provider");
-        int tId = Integer.parseInt(request.getParameter("tId"));
+        int rId = Integer.parseInt(request.getParameter("resourceId"));
 
-        Resource resource = new Resource(rId, rName, rType, quantity, provider, tId);
+        Resource resource = new Resource(rName, rType, quantity, provider, rId);
 
         try {
             resourceDao.updateResource(resource);
-            response.sendRedirect(request.getContextPath() + "/Resources/ListResourcesServlet");
+            response.sendRedirect(request.getContextPath() + "/ListResourcesServlet?taskId=" + taskId);
         } catch (SQLException e) {
             throw new ServletException("Error updating resource", e);
         }

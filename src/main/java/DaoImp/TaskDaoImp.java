@@ -14,14 +14,13 @@ import java.util.List;
 public class TaskDaoImp implements TaskDao {
 
     private static final String INSERT_TASK_SQL = "INSERT INTO task (t_description, t_start_date, t_end_date, statut, resources, p_id) VALUES (?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_TASK_SQL = "UPDATE task SET t_description = ?, t_start_date = ?, t_end_date = ?, p_id = ? WHERE t_id = ?;";
+    private static final String UPDATE_TASK_SQL = "UPDATE task SET t_description = ?, t_start_date = ?, t_end_date = ?, statut=?, resources=?  WHERE t_id = ?;";
     private static final String DELETE_TASK_SQL = "DELETE FROM task WHERE t_id = ?;";
-    private static final String SELECT_ALL_TASK_SQL = "SELECT * FROM task;";
+    private static final String SELECT_ALL_TASK_SQL = "SELECT * FROM task WHERE p_id = ?;";
     private static final String SELECT_TASK_BY_ID_SQL = "SELECT * FROM task WHERE t_id = ?;";
 
     @Override
     public void addTask(Task task) throws SQLException {
-        System.out.println("000000000000000000000000000000000000");
         try (Connection connection = Db_Connection.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_TASK_SQL)) {
             statement.setString(1, task.gettDescription());
@@ -50,8 +49,7 @@ public class TaskDaoImp implements TaskDao {
             statement.setDate(3, java.sql.Date.valueOf(task.gettEndDate()));
             statement.setString(4, task.getStatut());
             statement.setString(5, task.getResources());
-            statement.setInt(6, task.getpId());
-            statement.setInt(7, task.gettId());
+            statement.setInt(6, task.gettId());
             isUpdated = statement.executeUpdate() > 0;
         }
         return isUpdated;
@@ -67,11 +65,14 @@ public class TaskDaoImp implements TaskDao {
     }
 
     @Override
-    public List<Task> selectAllTasks() throws SQLException {
+    public List<Task> selectAllTasks(int projectId) throws SQLException {
         List<Task> allTasks = new ArrayList<>();
         try (Connection connection = Db_Connection.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_ALL_TASK_SQL);
-             ResultSet rs = statement.executeQuery()) {
+            ) {
+            statement.setInt(1, projectId);
+            ResultSet rs = statement.executeQuery();
+
             while (rs.next()) {
                 int tId = rs.getInt("t_id");
                 String tDescription = rs.getString("t_description");

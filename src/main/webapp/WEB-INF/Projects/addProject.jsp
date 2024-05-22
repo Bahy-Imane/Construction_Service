@@ -44,7 +44,7 @@
 </head>
 <body>
 <h1>Ajouter un Nouveau Projet</h1>
-<form action="${pageContext.request.contextPath}/AddProjectServlet" method="post">
+<form action="${pageContext.request.contextPath}/AddProjectServlet?projectId=${project.pId}" method="post">
     <div class="form-group">
         <label for="name">Nom du Projet:</label>
         <input type="text" id="name" name="name" required>

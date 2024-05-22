@@ -22,9 +22,10 @@ public class DeleteTaskServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int tId = Integer.parseInt(request.getParameter("taskId"));
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
         try {
             taskDao.deleteTask(tId);
-            response.sendRedirect(request.getContextPath() + "/ListTasksServlet");
+            response.sendRedirect(request.getContextPath() + "/ListTasksServlet?projectId=" + projectId);
         } catch (SQLException e) {
             throw new ServletException("Error deleting task", e);
         }

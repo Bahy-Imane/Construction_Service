@@ -11,8 +11,6 @@ public class Task {
     private String resources;
     private int pId;
 
-
-
     public Task() {}
 
 

@@ -26,6 +26,26 @@
 
 
     <servlet>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <servlet-class>Servlet.Projects.UpdateProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProjectServlet</servlet-name>
+        <url-pattern>/updateProject</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <servlet-class>Servlet.Projects.DeleteProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteProjectServlet</servlet-name>
+        <url-pattern>/deleteProject</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>ListTasksServlet</servlet-name>
         <servlet-class>Servlet.Tasks.ListTasksServlet</servlet-class>
     </servlet>

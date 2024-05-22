@@ -65,13 +65,13 @@
 <body>
 
 <div class="navbar">
-  <a href="${pageContext.request.contextPath}/Projects/listProjects">Projects</a>
-  <a href="${pageContext.request.contextPath}/Resources/AddResourceServlet">Add Resource</a>
+  <a href="${pageContext.request.contextPath}/listTask">Projects</a>
+  <a href="${pageContext.request.contextPath}/AddResourceServlet?taskId=${taskId}">Add Resource</a>
 </div>
 
 <h1>Liste des Ressources</h1>
 <div class="resource-cards">
-  <c:forEach var="resource" items="${listResources}">
+  <c:forEach var="resource" items="${resources}">
     <div class="resource-card">
       <h2>${resource.rName}</h2>
       <p><strong>Type:</strong> ${resource.rType}</p>
@@ -79,8 +79,8 @@
       <p><strong>Fournisseur:</strong> ${resource.provider}</p>
       <p><strong>ID Tâche:</strong> ${resource.tId}</p>
       <div class="button-container">
-        <a href="${pageContext.request.contextPath}/UpdateResourceServlet?resourceId=${resource.rId}" class="update-button">Update</a>
-        <a href="${pageContext.request.contextPath}/DeleteResourceServlet?resourceId=${resource.rId}" class="delete-button">Delete</a>
+        <a href="${pageContext.request.contextPath}/UpdateResourceServlet?resourceId=${resource.rId}&taskId=${taskId}" class="update-button">Update</a>
+        <a href="${pageContext.request.contextPath}/DeleteResourceServlet?resourceId=${resource.rId}&taskId=${taskId}" class="delete-button">Delete</a>
       </div>
     </div>
   </c:forEach>

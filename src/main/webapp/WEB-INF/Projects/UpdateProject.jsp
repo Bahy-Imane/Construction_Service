@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <title>Update Project</title>
     <style>
-        /* Ajouter vos styles ici */
+
     </style>
 </head>
 <body>
 <h1>Update Project</h1>
-<form action="${pageContext.request.contextPath}/UpdateProjectServlet" method="post">
+<form action="${pageContext.request.contextPath}/UpdateProjectServlet" method="POST">
+
     <input type="hidden" name="id" value="${project.pId}"/>
 
     <label for="name">Project Name:</label>
@@ -26,7 +27,7 @@
     <input type="date" id="endDate" name="endDate" value="${project.pEndDate}" required/>
 
     <label for="budget">Budget:</label>
-    <input type="number" id="budget" name="budget" value="${project.budget}" step="0.01" required/>
+    <input type="text" id="budget" name="budget" value="${project.budget}"  required/>
 
     <input type="submit" value="Update Project"/>
 </form>

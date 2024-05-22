@@ -45,7 +45,6 @@ public class ProjectDaoImp implements ProjectDao {
         return isUpdated;
     }
 
-    @Override
     public void deleteProject(int pId) throws SQLException {
         try (Connection connection = Db_Connection.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_PROJECT_SQL)) {
@@ -53,6 +52,7 @@ public class ProjectDaoImp implements ProjectDao {
             statement.executeUpdate();
         }
     }
+
 
     @Override
     public List<Project> selectAllProjects() throws SQLException {

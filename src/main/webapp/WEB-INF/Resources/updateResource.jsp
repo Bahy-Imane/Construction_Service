@@ -48,6 +48,10 @@
 <div class="form-container">
   <h2>Mettre à jour une Ressource</h2>
   <form action="${pageContext.request.contextPath}/UpdateResourceServlet" method="POST">
+    <input type="hidden"  name="taskId" value="${taskId}">
+
+    <input type="hidden"  name="resourceId" value="${resourceId}">
+
     <input type="hidden" name="rId" value="${resource.rId}">
     <div class="form-group">
       <label for="rName">Nom de la Ressource:</label>
@@ -64,10 +68,6 @@
     <div class="form-group">
       <label for="provider">Fournisseur:</label>
       <input type="text" id="provider" name="provider" value="${resource.provider}" required>
-    </div>
-    <div class="form-group">
-      <label for="tId">ID Tâche:</label>
-      <input type="number" id="tId" name="tId" value="${resource.tId}" required>
     </div>
     <div class="form-group">
       <button type="submit">Mettre à jour</button>

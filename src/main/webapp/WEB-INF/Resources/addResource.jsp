@@ -65,8 +65,7 @@
       <input type="text" id="provider" name="provider" required>
     </div>
     <div class="form-group">
-      <label for="tId">ID Tâche:</label>
-      <input type="number" id="tId" name="tId" required>
+      <input type="hidden" id="tId" name="tId" value="${taskId}">
     </div>
     <div class="form-group">
       <button type="submit">Ajouter</button>
