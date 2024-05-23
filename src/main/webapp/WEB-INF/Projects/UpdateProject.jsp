@@ -5,10 +5,62 @@
     <meta charset="UTF-8">
     <title>Update Project</title>
     <style>
+        body {
+            background-color: black;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            height: 70px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+
+        }
+
+        .navbar a:hover {
+            background-color: black;
+        }
+
+        .navbar .logo img {
+            height: 65px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+
+
+<div class="navbar">
+    <div class="logo">
+        <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
+    </div>
+    <div class="nav-links">
+        <a href="${pageContext.request.contextPath}">Home</a>
+        <a href="${pageContext.request.contextPath}/listProject">Projects</a>
+    </div>
+</div>
+
+
+
 <h1>Update Project</h1>
 <form action="${pageContext.request.contextPath}/UpdateProjectServlet" method="POST">
 

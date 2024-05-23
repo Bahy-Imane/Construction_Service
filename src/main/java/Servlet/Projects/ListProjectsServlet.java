@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/Projects/listProjects")
+@WebServlet("/listProjects")
 public class ListProjectsServlet extends HttpServlet {
     private ProjectDaoImp projectDao;
 

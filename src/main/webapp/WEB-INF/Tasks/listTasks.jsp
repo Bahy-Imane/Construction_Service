@@ -7,25 +7,43 @@
     <title>Liste des Tâches</title>
     <style>
         body {
+            background-color: black;
+            background-size: cover;
+            background-position: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+
         }
+
         .navbar {
-            background-color: #333;
-            overflow: hidden;
-            padding: 10px;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            padding: 10px 20px;
+            height: 70px;
         }
+
         .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
+            color: white;
             text-decoration: none;
+            padding: 14px 20px;
+
         }
+
         .navbar a:hover {
-            background-color: #ddd;
-            color: black;
+            background-color: black;
+        }
+
+        .navbar .logo img {
+            height: 65px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            margin-top: 10px;
         }
         .task-cards {
             display: flex;
@@ -72,9 +90,17 @@
 <body>
 
 <div class="navbar">
-    <a href="${pageContext.request.contextPath}/listProject">Projects</a>
-    <a href="${pageContext.request.contextPath}/AddTaskServlet?projectId=${projectId}">Add Task</a>
+    <div class="logo">
+        <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
+    </div>
+    <div class="nav-links">
+        <a href="${pageContext.request.contextPath}">Home</a>
+        <a href="${pageContext.request.contextPath}/listProject">Projects</a>
+        <a href="${pageContext.request.contextPath}/listTask">Tasks</a>
+        <a href="${pageContext.request.contextPath}/AddTaskServlet?projectId=${projectId}">Add Task</a>
+    </div>
 </div>
+
 
 <h2>Liste des Tâches</h2>
 
