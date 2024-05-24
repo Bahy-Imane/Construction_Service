@@ -94,25 +94,22 @@
         <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
     </div>
     <div class="nav-links">
-        <a href="${pageContext.request.contextPath}">Home</a>
+        <a href="${pageContext.request.contextPath}/home">Home</a>
         <a href="${pageContext.request.contextPath}/listProject">Projects</a>
-        <a href="${pageContext.request.contextPath}/listTask">Tasks</a>
+        <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
         <a href="${pageContext.request.contextPath}/AddTaskServlet?projectId=${projectId}">Add Task</a>
     </div>
 </div>
 
 
-<h2>Liste des Tâches</h2>
+
+<h2>List Of Tasks</h2>
 
 <div class="task-cards">
     <c:forEach var="task" items="${tasks}">
         <div class="task-card">
             <h2>${task.tDescription}</h2>
-            <p><strong>Description:</strong> ${task.tDescription}</p>
-            <p><strong>Date de Début:</strong> ${task.tStartdate}</p>
-            <p><strong>Date de Fin:</strong> ${task.tEndDate}</p>
-            <p><strong>Statut:</strong> ${task.statut}</p>
-            <p><strong>Ressources:</strong> ${task.resources}</p>
+            <a href="DetailsProjectsServlet?projectId=${project.pId}" class="details-link">Details</a>
             <div class="button-container">
                 <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">Update</a>
                 <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">Delete</a>

@@ -52,44 +52,58 @@
       justify-content: center;
     }
 
-    .project-card {
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 20px;
-      width: calc(50% - 40px); /* Two cards per row */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
     }
 
-    .project-card h2 {
+    .card {
+      width: 300px;
+      margin: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .cover-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .project-details {
+      padding: 16px;
+    }
+
+    .project-details h2 {
       margin-top: 0;
     }
 
-    .button-container {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .task-button, .update-button, .delete-button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      color: #fff;
-    }
-
-    .task-button {
-      background-color: #28a745;
-    }
-
-    .update-button {
+    .details-link {
+      display: block;
+      text-align: center;
       background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 0;
+      border-radius: 4px;
     }
 
-    .delete-button {
-      background-color: #dc3545;
+    .details-link:hover {
+      background-color: #0056b3;
     }
+
+    footer {
+      z-index: 500;
+      width: 100%;
+      height: 30vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      padding: 5rem 2vw;
+      position: relative;
+    }
+
   </style>
 </head>
 <body>
@@ -105,14 +119,22 @@
   </div>
 </div>
 
-
-
-
-
-
-<h1>Liste des Projets</h1>
+<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px">Our Projects</h1>
 
 <div class="project-cards">
+  <c:forEach var="project" items="${listProjects}">
+    <div class="card">
+      <div class="project-details">
+        <h2>${project.pName}</h2>
+        <a href="DetailsProjectsServlet?projectId=${project.pId}" class="details-link">Details</a>
+      </div>
+    </div>
+  </c:forEach>
+</div>
+
+
+
+<!--<div class="project-cards">
   <c:forEach var="project" items="${listProjects}">
     <div class="project-card">
       <h2>${project.pName}</h2>
@@ -127,6 +149,35 @@
       </div>
     </div>
   </c:forEach>
-</div>
+</div>-->
+<footer id="footer">
+  <div class="col col2">
+    <p style="color:#EDBB38; font-size: 30px;">About us</p>
+    <p style="color:white;">Our mission</p>
+    <p style="color:white;">Privacy Policy</p>
+    <p style="color:white;">Terms of service</p>
+  </div>
+  <div class="col col3">
+    <p style="color:#EDBB38; font-size: 30px;">Services</p>
+    <p style="color:white;">Products</p>
+    <p style="color:white;">Join our team</p>
+    <p style="color:white;">Partner with us</p>
+  </div>
+  <div class="col col1">
+    <h3 style="color:#EDBB38; font-size: 30px;">Contact us</h3>
+    <div class="social">
+      <a style="color:white;" href="https://codepen.io/Juxtopposed" target="_blank" class="link">
+        <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" />
+      </a>
+      <a style="color:white;" href="https://twitter.com/juxtopposed" target="_blank" class="link">
+        <img src="https://assets.codepen.io/9051928/x.png" alt="" />
+      </a>
+      <a style="color:white;" href="https://youtube.com/@juxtopposed" target="_blank" class="link">
+        <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" />
+      </a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

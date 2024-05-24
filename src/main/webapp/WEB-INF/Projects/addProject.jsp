@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un Nouveau Projet</title>
+    <title>Add Project</title>
     <style>
         body {
             background-color: black;
@@ -76,6 +76,18 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        footer {
+            z-index: 500;
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            padding: 5rem 2vw;
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -92,31 +104,45 @@
 
 
 
-
-
-<h1>Ajouter un Nouveau Projet</h1>
+<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px" >Add Project</h1>
+<div>
 <form action="${pageContext.request.contextPath}/AddProjectServlet?projectId=${project.pId}" method="post">
     <div class="form-group">
         <label for="name">Nom du Projet:</label>
         <input type="text" id="name" name="name" required>
     </div>
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
-    </div>
-    <div class="form-group">
-        <label for="startDate">Date de Début:</label>
-        <input type="date" id="startDate" name="startDate" required>
-    </div>
-    <div class="form-group">
-        <label for="endDate">Date de Fin:</label>
-        <input type="date" id="endDate" name="endDate" required>
-    </div>
-    <div class="form-group">
-        <label for="budget">Budget:</label>
-        <input type="text" id="budget" name="budget"  required>
-    </div>
     <input type="submit" value="Add Project">
 </form>
+</div>
+
+
+<footer id="footer">
+    <div class="col col2">
+        <p style="color:#EDBB38; font-size: 30px;">About us</p>
+        <p style="color:white;">Our mission</p>
+        <p style="color:white;">Privacy Policy</p>
+        <p style="color:white;">Terms of service</p>
+    </div>
+    <div class="col col3">
+        <p style="color:#EDBB38; font-size: 30px;">Services</p>
+        <p style="color:white;">Products</p>
+        <p style="color:white;">Join our team</p>
+        <p style="color:white;">Partner with us</p>
+    </div>
+    <div class="col col1">
+        <h3 style="color:#EDBB38; font-size: 30px;">Contact us</h3>
+        <div class="social">
+            <a style="color:white;" href="https://codepen.io/Juxtopposed" target="_blank" class="link">
+                <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" />
+            </a>
+            <a style="color:white;" href="https://twitter.com/juxtopposed" target="_blank" class="link">
+                <img src="https://assets.codepen.io/9051928/x.png" alt="" />
+            </a>
+            <a style="color:white;" href="https://youtube.com/@juxtopposed" target="_blank" class="link">
+                <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" />
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

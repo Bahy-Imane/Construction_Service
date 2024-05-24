@@ -86,7 +86,7 @@
     </div>
     <div class="nav-links">
         <a href="${pageContext.request.contextPath}">Home</a>
-        <a href="${pageContext.request.contextPath}/listTask">Tasks</a>
+        <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
     </div>
 </div>
 

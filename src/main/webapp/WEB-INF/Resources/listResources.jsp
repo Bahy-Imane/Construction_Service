@@ -65,8 +65,16 @@
 <body>
 
 <div class="navbar">
-  <a href="${pageContext.request.contextPath}/listTask">Projects</a>
-  <a href="${pageContext.request.contextPath}/AddResourceServlet?taskId=${taskId}">Add Resource</a>
+  <div class="logo">
+    <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
+  </div>
+  <div class="nav-links">
+    <a href="${pageContext.request.contextPath}/home">Home</a>
+    <a href="${pageContext.request.contextPath}/listProject">Projects</a>
+    <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
+    <a href="${pageContext.request.contextPath}/AddResourceServlet?taskId=${taskId}">Add Resource</a>
+
+  </div>
 </div>
 
 <h1>Liste des Ressources</h1>

@@ -47,7 +47,7 @@ public class UpdateProjectServlet extends HttpServlet {
 
         try {
             projectDao.updateProject(project);
-            response.sendRedirect(request.getContextPath() + "/Projects/listProjects");
+            response.sendRedirect(request.getContextPath() + "/listProjects");
         } catch (SQLException e) {
             throw new ServletException("Error updating project", e);
         }

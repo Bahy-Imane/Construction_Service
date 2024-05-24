@@ -30,6 +30,15 @@
 
 
     <servlet>
+        <servlet-name>AddProjectDetailsServlet</servlet-name>
+        <servlet-class>Servlet.Projects.AddProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProjectDetailsServlet</servlet-name>
+        <url-pattern>/addDetails</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>UpdateProjectServlet</servlet-name>
         <servlet-class>Servlet.Projects.UpdateProjectServlet</servlet-class>
     </servlet>

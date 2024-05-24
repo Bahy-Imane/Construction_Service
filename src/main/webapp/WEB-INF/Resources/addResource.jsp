@@ -45,6 +45,19 @@
 </head>
 <body>
 
+<div class="navbar">
+  <div class="logo">
+    <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
+  </div>
+  <div class="nav-links">
+    <a href="${pageContext.request.contextPath}/home">Home</a>
+    <a href="${pageContext.request.contextPath}/listProject">Projects</a>
+    <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
+    <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${taskId}">Resources</a>
+
+  </div>
+</div>
+
 <div class="form-container">
   <h2>Ajouter une Ressource</h2>
   <form action="${pageContext.request.contextPath}/AddResourceServlet" method="POST">
