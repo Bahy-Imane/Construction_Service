@@ -39,7 +39,7 @@ public class AddTaskServlet extends HttpServlet {
         String tDescription = request.getParameter("tDescription");
         String tStartDate = request.getParameter("tStartDate");
         String tEndDate = request.getParameter("tEndDate");
-        String statut = request.getParameter("status");
+        String statut = request.getParameter("statut");
         String resources = request.getParameter("resources");
         int projectId = Integer.parseInt(request.getParameter("projectId"));
 
@@ -58,4 +58,5 @@ public class AddTaskServlet extends HttpServlet {
             throw new ServletException("Error adding task", e);
         }
     }
+
 }

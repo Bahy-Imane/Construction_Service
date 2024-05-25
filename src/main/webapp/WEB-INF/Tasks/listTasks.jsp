@@ -109,12 +109,7 @@
     <c:forEach var="task" items="${tasks}">
         <div class="task-card">
             <h2>${task.tDescription}</h2>
-            <a href="DetailsProjectsServlet?projectId=${project.pId}" class="details-link">Details</a>
-            <div class="button-container">
-                <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">Update</a>
-                <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">Delete</a>
-                <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${task.tId}" class="resources-button">See All Resources</a>
-            </div>
+            <a href="DetailsTasksServlet?taskId=${task.tId}" class="details-link">Details</a>
         </div>
     </c:forEach>
 </div>

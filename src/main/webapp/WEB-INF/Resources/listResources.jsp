@@ -82,10 +82,6 @@
   <c:forEach var="resource" items="${resources}">
     <div class="resource-card">
       <h2>${resource.rName}</h2>
-      <p><strong>Type:</strong> ${resource.rType}</p>
-      <p><strong>Quantité:</strong> ${resource.quantity}</p>
-      <p><strong>Fournisseur:</strong> ${resource.provider}</p>
-      <p><strong>ID Tâche:</strong> ${resource.tId}</p>
       <div class="button-container">
         <a href="${pageContext.request.contextPath}/UpdateResourceServlet?resourceId=${resource.rId}&taskId=${taskId}" class="update-button">Update</a>
         <a href="${pageContext.request.contextPath}/DeleteResourceServlet?resourceId=${resource.rId}&taskId=${taskId}" class="delete-button">Delete</a>

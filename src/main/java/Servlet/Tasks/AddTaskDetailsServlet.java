@@ -1,5 +1,6 @@
 package Servlet.Tasks;
 
+import DaoImp.ProjectDaoImp;
 import DaoImp.TaskDaoImp;
 import Model.Task;
 
@@ -11,38 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/UpdateTaskServlet")
-public class UpdateTaskServlet extends HttpServlet {
+@WebServlet("/AddTaskDetailsServlet")
+public class AddTaskDetailsServlet extends HttpServlet {
     private TaskDaoImp taskDao;
+    private ProjectDaoImp projectDao;
 
     @Override
     public void init() {
         taskDao = new TaskDaoImp();
+        projectDao = new ProjectDaoImp();
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int tId = Integer.parseInt(request.getParameter("taskId"));
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
+
         int projectId = Integer.parseInt(request.getParameter("projectId"));
-        try {
-            Task task = taskDao.selectTaskById(tId);
-            request.setAttribute("task", task);
-            request.setAttribute("projectId", projectId);
-            request.getRequestDispatcher("/WEB-INF/Tasks/updateTask.jsp").forward(request, response);
-        } catch (SQLException e) {
-            throw new ServletException("Error retrieving task", e);
-        }
+        request.setAttribute("projectId", projectId);
+        request.getRequestDispatcher("/WEB-INF/Tasks/addTask.jsp").forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int projectId = Integer.parseInt(request.getParameter("projectId"));
-        int tId = Integer.parseInt(request.getParameter("tId"));
         String tDescription = request.getParameter("tDescription");
         String tStartDate = request.getParameter("tStartDate");
         String tEndDate = request.getParameter("tEndDate");
-        String statut = request.getParameter("status");
+        String statut = request.getParameter("statut");
         String resources = request.getParameter("resources");
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
 
         Task task = new Task();
         task.settDescription(tDescription);
@@ -50,12 +47,13 @@ public class UpdateTaskServlet extends HttpServlet {
         task.settEndDate(tEndDate);
         task.setStatut(statut);
         task.setResources(resources);
-        task.settId(tId);
+        task.setpId(projectId);
+
         try {
-            taskDao.updateTask(task);
+            taskDao.addTask(task);
             response.sendRedirect(request.getContextPath() + "/ListTasksServlet?projectId=" + projectId);
         } catch (SQLException e) {
-            throw new ServletException("Error updating task", e);
+            throw new ServletException("Error adding task", e);
         }
     }
 }

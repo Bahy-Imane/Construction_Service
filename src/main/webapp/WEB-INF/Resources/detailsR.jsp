@@ -132,24 +132,20 @@
     </div>
 </div>
 
-<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px">${project.pName}'s Details</h1>
+<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px">${task.tdescription}'s Resources</h1>
 
 <div class="container">
-    <div style="margin-left: 30px; background-color: white; border-radius: 20px; padding: 20px;" class="details">
-        <c:if test="${not empty task}">
-            <p><strong>Description :</strong> ${task.tDescription}</p>
-            <p><strong>Start Date :</strong> ${task.tStartdate}</p>
-            <p><strong>End Date :</strong> ${task.tEndDate}</p>
-            <p><strong>Statut :</strong> ${task.statut}</p>
-            <p><strong>Resources :</strong> ${task.resources}</p>
+    <div style="margin-left: 30px;" class="details">
+        <c:if test="${not empty resource}">
+            <p><strong>Type:</strong> ${resource.rType}</p>
+            <p><strong>Quantité:</strong> ${resource.quantity}</p>
+            <p><strong>Fournisseur:</strong> ${resource.provider}</p>
         </c:if>
     </div>
 </div>
 
+
 <div class="button-container">
-    <div class="button-group">
-        <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${task.tId}" class="resources-button">See All Resources</a>
-    </div>
     <div class="button-group">
         <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">Update</a>
         <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">Delete</a>

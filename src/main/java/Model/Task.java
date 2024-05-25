@@ -1,7 +1,5 @@
 package Model;
 
-import java.sql.Date;
-
 public class Task {
     private int tId;
     private String tDescription;
@@ -13,7 +11,6 @@ public class Task {
 
     public Task() {}
 
-
     public Task(int tId, String tDescription, String tStartdate, String tEndDate, String statut, String resources, int pId) {
         this.tId = tId;
         this.tDescription = tDescription;
@@ -24,6 +21,7 @@ public class Task {
         this.pId = pId;
     }
 
+    // Getters and Setters
     public int gettId() {
         return tId;
     }

@@ -27,6 +27,10 @@ public class Resource {
         this.rId = rId;
     }
 
+    public Resource(String rName, String rType, int quantity, String provider) {
+
+    }
+
     public int getrId() {
         return rId;
     }
