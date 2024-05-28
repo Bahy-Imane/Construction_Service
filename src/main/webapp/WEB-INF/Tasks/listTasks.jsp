@@ -156,7 +156,7 @@
             <img src="${task.tImg}" alt="Project Image">
             <div class="task-details">
             <h2 >${task.tDescription}</h2>
-                <a href="DetailsTasksServlet?taskId=${task.tId}" class="details-link"><img src="Image/eye.png" alt="Details"></a>
+                <a href="DetailsTasksServlet?taskId=${task.tId}&projectId=${projectId}" class="details-link"><img src="Image/eye.png" alt="Details"></a>
         </div>
         </div>
     </c:forEach>

@@ -14,9 +14,11 @@ public class DetailsTasksServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TaskDaoImp task = new TaskDaoImp();
         int idTask = Integer.parseInt(request.getParameter("taskId"));
+        int projectId = Integer.parseInt(request.getParameter("projectId"));
 
         try {
             request.setAttribute("task", task.selectTaskById(idTask));
+            request.setAttribute("projectId", projectId);
             request.getRequestDispatcher("/WEB-INF/Tasks/detailsT.jsp").forward(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);

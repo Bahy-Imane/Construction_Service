@@ -137,16 +137,18 @@
 
 <h1>Update Task</h1>
 <form action="${pageContext.request.contextPath}/UpdateTaskServlet" method="POST" >
-    <input type="hidden" name="id" value="${task.id}"/>
+    <input type="hidden" name="tId" value="${task.tId}"/>
+    <input type="hidden" name="projectId" value="${projectId}"/>
+
 
     <label for="description">Task Description:</label>
-    <input type="text" id="description" name="description" value="${task.description}" required/>
+    <input type="text" id="description" name="tDescription" value="${task.tDescription}" required/>
 
     <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate" value="${task.startDate}" required/>
+    <input type="date" id="startDate" name="tStartDate" value="${task.tStartdate}" required/>
 
     <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" value="${task.endDate}" required/>
+    <input type="date" id="endDate" name="tEndDate" value="${task.tEndDate}" required/>
 
     <label for="status">Status:</label>
     <select id="status" name="status" required>
@@ -155,6 +157,16 @@
         <option value="Done">Done</option>
     </select>
 
+    <label for="description">Task resources:</label>
+    <input type="text" id="resources" name="resources" value="${task.resources}" required/>
+
+    <div class="form-group">
+        <label for="tImg">Project's Pic URL:</label>
+        <input type="url" id="tImg" name="tImg" placeholder="http://example.com/image.jpg" value="${task.tImg}" required>
+    </div>
+    <div class="img-preview">
+        <img id="previewImg" src="" alt="Task Image Preview">
+    </div>
     <input type="submit" value="Update Task"/>
 </form>
 

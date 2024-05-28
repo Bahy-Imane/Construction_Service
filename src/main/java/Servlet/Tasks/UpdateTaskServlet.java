@@ -43,7 +43,7 @@ public class UpdateTaskServlet extends HttpServlet {
         String tEndDate = request.getParameter("tEndDate");
         String statut = request.getParameter("status");
         String resources = request.getParameter("resources");
-
+        String tImg = request.getParameter("tImg");
 
         Task task = new Task();
         task.settDescription(tDescription);
@@ -51,6 +51,7 @@ public class UpdateTaskServlet extends HttpServlet {
         task.settEndDate(tEndDate);
         task.setStatut(statut);
         task.setResources(resources);
+        task.settImg(tImg);
         task.settId(tId);
         try {
             taskDao.updateTask(task);

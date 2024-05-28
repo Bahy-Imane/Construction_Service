@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResourceDaoImp implements ResourceDao {
-
     private static final String INSERT_RESOURCE_SQL = "INSERT INTO resource (r_name, r_type, r_quantity, provider, t_id,r_img) VALUES (?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_RESOURCE_SQL = "UPDATE resource SET r_name = ?, r_type = ?, r_quantity = ?, provider = ? WHERE r_id = ?;";
+    private static final String UPDATE_RESOURCE_SQL = "UPDATE resource SET r_name = ?, r_type = ?, r_quantity = ?, provider = ?,r_img=? WHERE r_id = ?;";
     private static final String DELETE_RESOURCE_SQL = "DELETE FROM resource WHERE r_id = ?;";
     private static final String SELECT_ALL_RESOURCE_SQL = "SELECT * FROM resource WHERE t_id = ?;";
     private static final String SELECT_RESOURCE_BY_ID_SQL = "SELECT * FROM resource WHERE t_id = ?;";
@@ -41,7 +40,8 @@ public class ResourceDaoImp implements ResourceDao {
             statement.setString(2, resource.getrType());
             statement.setInt(3, resource.getQuantity());
             statement.setString(4, resource.getProvider());
-            statement.setInt(5, resource.getrId());
+            statement.setString(5, resource.getrImg());
+            statement.setInt(6, resource.getrId());
             isUpdated = statement.executeUpdate() > 0;
         }
         return isUpdated;
@@ -90,7 +90,7 @@ public class ResourceDaoImp implements ResourceDao {
                 if (rs.next()) {
                     String rName = rs.getString("r_name");
                     String rType = rs.getString("r_type");
-                    int quantity = rs.getInt("quantity");
+                    int quantity = rs.getInt("r_quantity");
                     String provider = rs.getString("provider");
                     int tId = rs.getInt("t_id");
                     String rImg = rs.getString("r_img");

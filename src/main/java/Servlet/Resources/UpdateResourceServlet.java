@@ -38,12 +38,14 @@ public class UpdateResourceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int taskId = Integer.parseInt(request.getParameter("taskId"));
+        int resourceId = Integer.parseInt(request.getParameter("resourceId"));
         String rName = request.getParameter("rName");
         String rType = request.getParameter("rType");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String provider = request.getParameter("provider");
+        String rImg = request.getParameter("rImg");
 
-        Resource resource = new Resource(rName, rType, quantity, provider);
+        Resource resource = new Resource(rName, rType, quantity, provider, rImg, resourceId);
 
         try {
             resourceDao.updateResource(resource);

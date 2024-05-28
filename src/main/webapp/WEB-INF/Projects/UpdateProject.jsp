@@ -156,6 +156,14 @@
     <label for="budget">Budget:</label>
     <input type="text" id="budget" name="budget" value="${project.budget}" required/>
 
+    <div class="form-group">
+    <label for="pImg">URL de l'Image du Projet:</label>
+    <input type="url" id="pImg" name="pImg" placeholder="http://example.com/image.jpg" value="${project.pImg}" required>
+    </div>
+    <div class="img-preview">
+        <img id="previewImg" src="" alt="Project Image Preview">
+    </div>
+
     <input type="submit" value="Update Project"/>
 </form>
 

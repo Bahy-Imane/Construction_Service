@@ -29,6 +29,6 @@ public class DeleteProjectServlet extends HttpServlet {
             throw new ServletException("Error deleting project", e);
         }
 
-        response.sendRedirect(request.getContextPath() + "/Projects/listProjects");
+        response.sendRedirect(request.getContextPath() + "/listProjects");
     }
 }

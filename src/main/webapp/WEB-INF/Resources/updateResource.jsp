@@ -6,39 +6,86 @@
   <title>Mettre à jour une Ressource</title>
   <style>
     body {
+      background-color: black;
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      color: #FFD700; /* Yellow text color for the body */
     }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      padding: 10px 20px;
+      height: 70px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+    }
+
+    .navbar a:hover {
+      background-color: black;
+    }
+
+    .navbar .logo img {
+      height: 65px;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      margin-top: 10px;
+    }
+
     .form-container {
       max-width: 500px;
-      margin: 0 auto;
+      margin: 50px auto;
       padding: 20px;
-      border: 1px solid #ddd;
+      border: 2px solid ;
       border-radius: 5px;
-      background-color: #f9f9f9;
+      background-color: #333;
     }
+
     .form-container h2 {
       margin-top: 0;
+
     }
+
     .form-group {
       margin-bottom: 20px;
     }
+
     .form-group label {
       display: block;
       font-weight: bold;
+
     }
-    .form-group input[type="text"], .form-group input[type="number"], .form-group select {
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid ;
       border-radius: 5px;
       box-sizing: border-box;
+      background-color: black;
+      color: white;
     }
+
     .form-group button {
       padding: 10px 20px;
-      background-color: #007bff;
+      background-color: #FFD700;
       border: none;
       border-radius: 5px;
-      color: #fff;
+      color: black;
       cursor: pointer;
     }
 
@@ -85,17 +132,14 @@
     <a href="${pageContext.request.contextPath}/listProject">Projects</a>
     <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
     <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${taskId}">Resources</a>
-
   </div>
 </div>
 
 <div class="form-container">
-  <h2>Mettre à jour une Ressource</h2>
+  <h2>Update Resource</h2>
   <form action="${pageContext.request.contextPath}/UpdateResourceServlet" method="POST">
-    <input type="hidden"  name="taskId" value="${taskId}">
-
-    <input type="hidden"  name="resourceId" value="${resourceId}">
-
+    <input type="hidden" name="taskId" value="${taskId}">
+    <input type="hidden" name="resourceId" value="${resourceId}">
     <input type="hidden" name="rId" value="${resource.rId}">
     <div class="form-group">
       <label for="rName">Resource Name:</label>
@@ -110,15 +154,18 @@
       <input type="number" id="quantity" name="quantity" value="${resource.quantity}" required>
     </div>
     <div class="form-group">
-      <label for="provider">Provider :</label>
+      <label for="provider">Provider:</label>
       <input type="text" id="provider" name="provider" value="${resource.provider}" required>
+    </div>
+    <div class="form-group">
+      <label for="rImg">Resource Image:</label>
+      <input type="text" id="rImg" name="rImg" value="${resource.rImg}" required>
     </div>
     <div class="form-group">
       <button type="submit">Update Resource</button>
     </div>
   </form>
 </div>
-
 
 <footer id="footer">
   <div class="col">

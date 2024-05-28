@@ -10,7 +10,7 @@ import java.util.List;
 public class ProjectDaoImp implements ProjectDao {
 
     private static final String INSERT_PROJECT_SQL = "INSERT INTO project (p_id, p_name, p_description, p_start_date, p_end_date, budget, p_img) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_PROJECT_SQL = "UPDATE project SET p_name = ?, p_description = ?, p_start_date = ?, p_end_date = ?, budget = ? WHERE p_id = ?;";
+    private static final String UPDATE_PROJECT_SQL = "UPDATE project SET p_name = ?, p_description = ?, p_start_date = ?, p_end_date = ?, budget = ?, p_img=? WHERE p_id = ?;";
     private static final String DELETE_PROJECT_SQL = "DELETE FROM project WHERE p_id = ?;";
     private static final String SELECT_ALL_PROJECT_SQL = "SELECT * FROM project;";
     private static final String SELECT_PROJECT_BY_ID_SQL = "SELECT * FROM project WHERE p_id = ?;";
@@ -40,7 +40,8 @@ public class ProjectDaoImp implements ProjectDao {
             statement.setDate(3, project.getpStartdate());
             statement.setDate(4, project.getpEndDate());
             statement.setDouble(5, project.getBudget());
-            statement.setInt(6, project.getpId());
+            statement.setString(6, project.getpImg());
+            statement.setInt(7, project.getpId());
             isUpdated = statement.executeUpdate() > 0;
         }
         return isUpdated;

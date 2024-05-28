@@ -22,6 +22,23 @@ public class Resource {
         this.rImg = rImg;
     }
 
+    public Resource(String rName, String rType, int quantity, String provider, String rImg) {
+        this.rName = rName;
+        this.rType = rType;
+        this.quantity = quantity;
+        this.provider = provider;
+        this.rImg = rImg;
+    }
+
+    public Resource(String rName, String rType, int quantity, String provider, String rImg, int resourceId) {
+        this.rName = rName;
+        this.rType = rType;
+        this.quantity = quantity;
+        this.provider = provider;
+        this.rImg = rImg;
+        this.rId = resourceId;
+    }
+
     public String getrImg() {
         return rImg;
     }

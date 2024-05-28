@@ -42,12 +42,14 @@
       display: flex;
       margin-top: 10px;
     }
+
     .resource-cards {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
       padding: 20px;
+
     }
 
     .resource-card {
@@ -102,8 +104,9 @@
 <div class="resource-cards">
   <c:forEach var="resource" items="${resources}">
     <div class="resource-card">
-      <c:if test="${not empty task.tImg}">
-      <h2>${resource.rName}</h2>
+      <c:if test="${not empty resource.rImg}">
+        <img src="${resource.rImg}" alt="${resource.rName} Image">
+        <h2>${resource.rName}</h2>
       <p><strong>Type:</strong> ${resource.rType}</p>
       <p><strong>Quantity:</strong> ${resource.quantity}</p>
       <p><strong>Provider:</strong> ${resource.provider}</p>

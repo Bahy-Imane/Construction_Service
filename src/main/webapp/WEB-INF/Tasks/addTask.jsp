@@ -124,7 +124,7 @@
   <h2>Tasks</h2>
   <form action="${pageContext.request.contextPath}/AddTaskServlet" method="POST" class="form">
     <div class="form-group">
-      <label for="description">Description de la Tâche:</label>
+      <label for="description">Task Description :</label>
       <input type="text" id="description" name="tDescription" required>
     </div>
     <div class="form-group">
@@ -135,6 +135,7 @@
       <label for="endDate">End Date:</label>
       <input type="date" id="endDate" name="tEndDate" required>
     </div>
+
     <div class="form-group">
       <label for="status">Status:</label>
       <select id="status" name="statut" required>
@@ -154,7 +155,7 @@
     <div class="img-preview">
       <img id="previewImg" src="" alt="Aperçu de l'Image de la Tâche">
     </div>
-    <div class="form-group">
+    <div>
       <input type="hidden" id="projectId" name="projectId" value="${projectId}">
     </div>
     <div class="form-group">

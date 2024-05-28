@@ -42,8 +42,9 @@ public class UpdateProjectServlet extends HttpServlet {
         Date startDate = Date.valueOf(request.getParameter("startDate"));
         Date endDate = Date.valueOf(request.getParameter("endDate"));
         double budget = Double.parseDouble(request.getParameter("budget"));
+        String pImg = request.getParameter("pImg");
 
-        Project project = new Project(id, name, description, startDate, endDate, budget);
+        Project project = new Project(id, name, description, startDate, endDate, budget, pImg);
 
         try {
             projectDao.updateProject(project);
