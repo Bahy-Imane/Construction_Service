@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ResourceDaoImp implements ResourceDao {
 
-    private static final String INSERT_RESOURCE_SQL = "INSERT INTO resource (r_name, r_type, r_quantity, provider, t_id) VALUES (?, ?, ?, ?, ?);";
+    private static final String INSERT_RESOURCE_SQL = "INSERT INTO resource (r_name, r_type, r_quantity, provider, t_id,r_img) VALUES (?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_RESOURCE_SQL = "UPDATE resource SET r_name = ?, r_type = ?, r_quantity = ?, provider = ? WHERE r_id = ?;";
     private static final String DELETE_RESOURCE_SQL = "DELETE FROM resource WHERE r_id = ?;";
     private static final String SELECT_ALL_RESOURCE_SQL = "SELECT * FROM resource WHERE t_id = ?;";
@@ -27,6 +27,7 @@ public class ResourceDaoImp implements ResourceDao {
             statement.setInt(3, resource.getQuantity());
             statement.setString(4, resource.getProvider());
             statement.setInt(5, resource.gettId());
+            statement.setString(6, resource.getrImg());
             statement.executeUpdate();
         }
     }
@@ -71,7 +72,8 @@ public class ResourceDaoImp implements ResourceDao {
                 int quantity = rs.getInt("r_quantity");
                 String provider = rs.getString("provider");
                 int tId = rs.getInt("t_id");
-                allResources.add(new Resource(rId, rName, rType, quantity, provider, tId));
+                String rImg = rs.getString("r_img");
+                allResources.add(new Resource(rId, rName, rType, quantity, provider, tId,rImg));
             }
         }
 
@@ -91,7 +93,8 @@ public class ResourceDaoImp implements ResourceDao {
                     int quantity = rs.getInt("quantity");
                     String provider = rs.getString("provider");
                     int tId = rs.getInt("t_id");
-                    resource = new Resource(rId, rName, rType, quantity, provider, tId);
+                    String rImg = rs.getString("r_img");
+                    resource = new Resource(rId, rName, rType, quantity, provider, tId,rImg);
                 }
             }
         }

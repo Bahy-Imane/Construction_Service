@@ -5,6 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Tasks Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
@@ -45,8 +52,11 @@
         }
 
         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
             max-width: 600px;
-            margin: 50px auto;
+            margin: 0 auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -59,7 +69,11 @@
         }
 
         .details {
-            margin-top: 20px;
+            margin-top: 16px;
+            margin-left: 20px;
+            background-color: #EDBB38;
+            padding: 10px;
+            border-radius: 20px;
         }
 
         .details p {
@@ -72,52 +86,62 @@
             margin-right: 10px;
         }
 
+
         footer {
-            z-index: 500;
-            width: 100%;
-            height: 30vh;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: flex-end;
-            padding: 5rem 2vw;
-            position: relative;
-        }
-
-        .button-container {
             display: flex;
             justify-content: space-evenly;
+            align-items: flex-start;
+            padding: 40px 20px;
+            background-color: #222;
         }
 
-        .button-group {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
+        footer .col {
+            flex: 1;
+            padding: 0 20px;
         }
 
-        .task-button {
-            background-color: #FFD700;
-            padding: 10px 20px;
+        footer .col h3, footer .col p {
+            color: #EDBB38;
+            margin-bottom: 10px;
+        }
+
+        footer .col p {
+            color: white;
+        }
+
+        footer .social a {
+            color: white;
+            margin-right: 10px;
+        }
+
+        footer .social img {
+            height: 30px;
+        }
+
+
+
+        .task-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .task-image img {
+            width: 200px;
+            height: 250px;
+            border-radius: 8px;
+        }
+        .card-footer a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #FFD700;
             text-decoration: none;
-            color: #333;
-            border-radius: 5px;
+
         }
 
-        .update-button {
-            background-color: #00FF00;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #333;
-            border-radius: 5px;
+        .card-footer i {
+            margin-right: 5px;
         }
 
-        .delete-button {
-            background-color: #FF0000;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #333;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -132,54 +156,69 @@
     </div>
 </div>
 
-<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px">${project.pName}'s Details</h1>
-
+<h1 style="display: flex;justify-content: center;align-items: center;margin-left: 490px; background-color: #FFD700;color: #333;padding: 20px;color: white;width: 200px;border-radius: 10px">${project.pName}'s Task</h1>
 <div class="container">
-    <div style="margin-left: 30px; background-color: white; border-radius: 20px; padding: 20px;" class="details">
-        <c:if test="${not empty task}">
+    <div class="task-image">
+        <c:if test="${not empty task.tImg}">
+            <img src="${task.tImg}" alt="${task.tDescription} Image">
+        </c:if>
+    </div>
+
+    <div class="details">
+            <c:if test="${not empty task}">
             <p><strong>Description :</strong> ${task.tDescription}</p>
             <p><strong>Start Date :</strong> ${task.tStartdate}</p>
             <p><strong>End Date :</strong> ${task.tEndDate}</p>
             <p><strong>Statut :</strong> ${task.statut}</p>
             <p><strong>Resources :</strong> ${task.resources}</p>
+
         </c:if>
     </div>
+
+    <div style="display: flex;flex-direction: row;justify-content: space-evenly" class="card-footer">
+        <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">
+            <i class="bi bi-pencil"></i> Edit
+        </a>
+        <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${task.tId}" class="resources-button">
+            <i class="bi bi-list-check"></i> View Resources
+        </a>
+        <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">
+            <i class="bi bi-trash"></i> Delete
+        </a>
+    </div>
+
 </div>
 
-<div class="button-container">
-    <div class="button-group">
-        <a href="${pageContext.request.contextPath}/ListResourcesServlet?taskId=${task.tId}" class="resources-button">See All Resources</a>
-    </div>
-    <div class="button-group">
-        <a href="${pageContext.request.contextPath}/UpdateTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="update-button">Update</a>
-        <a href="${pageContext.request.contextPath}/DeleteTaskServlet?taskId=${task.tId}&projectId=${projectId}" class="delete-button">Delete</a>
-    </div>
-</div>
+
+
+
+
+
 
 <footer id="footer">
-    <div class="col col2">
-        <p style="color:#EDBB38; font-size: 30px;">About us</p>
-        <p style="color:white;">Our mission</p>
-        <p style="color:white;">Privacy Policy</p>
-        <p style="color:white;">Terms of service</p>
+    <div class="col">
+        <h3>About us</h3>
+        <p>Our mission</p>
+        <p>Privacy Policy</p>
+        <p>Terms of service</p>
     </div>
-    <div class="col col3">
-        <p style="color:#EDBB38; font-size: 30px;">Services</p>
-        <p style="color:white;">Products</p>
-        <p style="color:white;">Join our team</p>
-        <p style="color:white;">Partner with us</p>
+    <div class="col">
+        <h3>Services</h3>
+        <p>Products</p>
+        <p>Join our team</p>
+        <p>Partner with us</p>
     </div>
-    <div class="col col1">
-        <h3 style="color:#EDBB38; font-size: 30px;">Contact us</h3>
+    <div class="col">
+        <h3>Contact us</h3>
         <div class="social">
-            <a style="color:white;" href="https://codepen.io/Juxtopposed" target="_blank" class="link">
-                <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="" />
+            <a href="https://codepen.io/Juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen">
             </a>
-            <a style="color:white;" href="https://twitter.com/juxtopposed" target="_blank" class="link">
-                <img src="https://assets.codepen.io/9051928/x.png" alt="" />
+            <a href="https://twitter.com/juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/x.png" alt="Twitter">
             </a>
-            <a style="color:white;" href="https://youtube.com/@juxtopposed" target="_blank" class="link">
-                <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="" />
+            <a href="https://youtube.com/@juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube">
             </a>
         </div>
     </div>

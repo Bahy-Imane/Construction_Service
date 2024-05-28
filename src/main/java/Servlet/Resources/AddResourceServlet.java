@@ -32,17 +32,19 @@ public class AddResourceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rName = request.getParameter("rName");
-//        String rType = request.getParameter("rType");
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        String provider = request.getParameter("provider");
+        String rType = request.getParameter("rType");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        String provider = request.getParameter("provider");
+        String rImg = request.getParameter("rImg");
         int tId = Integer.parseInt(request.getParameter("tId"));
 
         Resource resource = new Resource();
         resource.setrName(rName);
-//        resource.setrType(rType);
-//        resource.setQuantity(quantity);
-//        resource.setProvider(provider);
+        resource.setrType(rType);
+        resource.setQuantity(quantity);
+        resource.setProvider(provider);
         resource.settId(tId);
+        resource.setrImg(rImg);
 
         try {
             resourceDao.addResource(resource);

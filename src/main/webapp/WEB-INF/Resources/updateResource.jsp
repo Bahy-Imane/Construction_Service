@@ -41,6 +41,37 @@
       color: #fff;
       cursor: pointer;
     }
+
+    footer {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      padding: 40px 20px;
+      background-color: #222;
+    }
+
+    footer .col {
+      flex: 1;
+      padding: 0 20px;
+    }
+
+    footer .col h3, footer .col p {
+      color: #EDBB38;
+      margin-bottom: 10px;
+    }
+
+    footer .col p {
+      color: white;
+    }
+
+    footer .social a {
+      color: white;
+      margin-right: 10px;
+    }
+
+    footer .social img {
+      height: 30px;
+    }
   </style>
 </head>
 <body>
@@ -67,26 +98,55 @@
 
     <input type="hidden" name="rId" value="${resource.rId}">
     <div class="form-group">
-      <label for="rName">Nom de la Ressource:</label>
+      <label for="rName">Resource Name:</label>
       <input type="text" id="rName" name="rName" value="${resource.rName}" required>
     </div>
     <div class="form-group">
-      <label for="rType">Type de la Ressource:</label>
+      <label for="rType">Resource Type:</label>
       <input type="text" id="rType" name="rType" value="${resource.rType}" required>
     </div>
     <div class="form-group">
-      <label for="quantity">Quantité:</label>
+      <label for="quantity">Quantity:</label>
       <input type="number" id="quantity" name="quantity" value="${resource.quantity}" required>
     </div>
     <div class="form-group">
-      <label for="provider">Fournisseur:</label>
+      <label for="provider">Provider :</label>
       <input type="text" id="provider" name="provider" value="${resource.provider}" required>
     </div>
     <div class="form-group">
-      <button type="submit">Mettre à jour</button>
+      <button type="submit">Update Resource</button>
     </div>
   </form>
 </div>
 
+
+<footer id="footer">
+  <div class="col">
+    <h3>About us</h3>
+    <p>Our mission</p>
+    <p>Privacy Policy</p>
+    <p>Terms of service</p>
+  </div>
+  <div class="col">
+    <h3>Services</h3>
+    <p>Products</p>
+    <p>Join our team</p>
+    <p>Partner with us</p>
+  </div>
+  <div class="col">
+    <h3>Contact us</h3>
+    <div class="social">
+      <a href="https://codepen.io/Juxtopposed" target="_blank">
+        <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen">
+      </a>
+      <a href="https://twitter.com/juxtopposed" target="_blank">
+        <img src="https://assets.codepen.io/9051928/x.png" alt="Twitter">
+      </a>
+      <a href="https://youtube.com/@juxtopposed" target="_blank">
+        <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube">
+      </a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

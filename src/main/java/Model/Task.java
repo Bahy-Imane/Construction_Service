@@ -8,10 +8,12 @@ public class Task {
     private String statut;
     private String resources;
     private int pId;
+    private String tImg;
 
-    public Task() {}
+    public Task() {
+    }
 
-    public Task(int tId, String tDescription, String tStartdate, String tEndDate, String statut, String resources, int pId) {
+    public Task(int tId, String tDescription, String tStartdate, String tEndDate, String statut, String resources, int pId, String tImg) {
         this.tId = tId;
         this.tDescription = tDescription;
         this.tStartdate = tStartdate;
@@ -19,9 +21,21 @@ public class Task {
         this.statut = statut;
         this.resources = resources;
         this.pId = pId;
+        this.tImg = tImg;
     }
 
-    // Getters and Setters
+
+// Getters and Setters
+
+
+    public String gettImg() {
+        return tImg;
+    }
+
+    public void settImg(String tImg) {
+        this.tImg = tImg;
+    }
+
     public int gettId() {
         return tId;
     }

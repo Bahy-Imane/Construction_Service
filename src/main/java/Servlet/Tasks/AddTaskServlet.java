@@ -42,6 +42,7 @@ public class AddTaskServlet extends HttpServlet {
         String statut = request.getParameter("statut");
         String resources = request.getParameter("resources");
         int projectId = Integer.parseInt(request.getParameter("projectId"));
+        String tImg = request.getParameter("tImg");
 
         Task task = new Task();
         task.settDescription(tDescription);
@@ -50,6 +51,7 @@ public class AddTaskServlet extends HttpServlet {
         task.setStatut(statut);
         task.setResources(resources);
         task.setpId(projectId);
+        task.settImg(tImg);
 
         try {
             taskDao.addTask(task);

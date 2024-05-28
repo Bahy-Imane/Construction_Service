@@ -44,6 +44,7 @@ public class UpdateTaskServlet extends HttpServlet {
         String statut = request.getParameter("status");
         String resources = request.getParameter("resources");
 
+
         Task task = new Task();
         task.settDescription(tDescription);
         task.settStartdate(tStartDate);

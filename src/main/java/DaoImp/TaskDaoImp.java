@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TaskDaoImp implements TaskDao {
 
-    private static final String INSERT_TASK_SQL = "INSERT INTO task (t_description, t_start_date, t_end_date, statut, resources, p_id) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String INSERT_TASK_SQL = "INSERT INTO task (t_description, t_start_date, t_end_date, statut, resources, p_id,t_img) VALUES (?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_TASK_SQL = "UPDATE task SET t_description = ?, t_start_date = ?, t_end_date = ?, statut=?, resources=?  WHERE t_id = ?;";
     private static final String DELETE_TASK_SQL = "DELETE FROM task WHERE t_id = ?;";
     private static final String SELECT_ALL_TASK_SQL = "SELECT * FROM task WHERE p_id = ?;";
@@ -33,6 +33,7 @@ public class TaskDaoImp implements TaskDao {
             statement.setString(4, task.getStatut());
             statement.setString(5, task.getResources());
             statement.setInt(6, task.getpId());
+            statement.setString(7, task.gettImg());
             statement.executeUpdate();
         } catch (ParseException e) {
             throw new RuntimeException(e);
@@ -81,7 +82,8 @@ public class TaskDaoImp implements TaskDao {
                 String tStatut = rs.getString("statut");
                 String resources = rs.getString("resources");
                 int pId = rs.getInt("p_id");
-                allTasks.add(new Task(tId, tDescription, tStartdate, tEndDate,tStatut,resources, pId));
+                String tImg = rs.getString("t_img");
+                allTasks.add(new Task(tId, tDescription, tStartdate, tEndDate,tStatut,resources, pId,tImg));
             }
         }
         return allTasks;
@@ -101,7 +103,8 @@ public class TaskDaoImp implements TaskDao {
                     String tStatut = rs.getString("statut");
                     String resources = rs.getString("resources");
                     int pId = rs.getInt("p_id");
-                    task = new Task(tId, tDescription, tStartdate, tEndDate,tStatut,resources, pId);
+                    String tImg = rs.getString("t_img");
+                    task = new Task(tId, tDescription, tStartdate, tEndDate,tStatut,resources, pId, tImg);
                 }
             }
         }

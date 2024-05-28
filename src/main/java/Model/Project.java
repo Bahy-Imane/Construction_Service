@@ -9,18 +9,32 @@ public class Project {
     private Date pStartdate;
     private Date pEndDate;
     private double budget;
+    private String pImg;
 
-    // Constructeurs, getters et setters
+    public Project() {
+    }
 
-    public Project() {}
+    public Project(int id, String name, String description, Date startDate, Date endDate, double budget) {
 
-    public Project(int pId, String pName, String pDescription, Date pStartdate, Date pEndDate, double budget) {
+    }
+
+    public String getpImg() {
+        return pImg;
+    }
+
+    public void setpImg(String pImg) {
+        this.pImg = pImg;
+    }
+
+
+    public Project(int pId, String pName, String pDescription, Date pStartdate, Date pEndDate, double budget, String pImg) {
         this.pId = pId;
         this.pName = pName;
         this.pDescription = pDescription;
         this.pStartdate = pStartdate;
         this.pEndDate = pEndDate;
         this.budget = budget;
+        this.pImg = pImg;
     }
 
     public int getpId() {

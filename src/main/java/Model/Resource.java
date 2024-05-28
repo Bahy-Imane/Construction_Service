@@ -7,24 +7,27 @@ public class Resource {
     private int quantity;
     private String provider;
     private int tId;
+    private String rImg;
 
-    public Resource() {}
+    public Resource() {
+    }
 
-    public Resource(int rId, String rName, String rType, int quantity, String provider, int tId) {
+    public Resource(int rId, String rName, String rType, int quantity, String provider, int tId, String rImg) {
         this.rId = rId;
         this.rName = rName;
         this.rType = rType;
         this.quantity = quantity;
         this.provider = provider;
         this.tId = tId;
+        this.rImg = rImg;
     }
 
-    public Resource(String rName, String rType, int quantity, String provider, int rId) {
-        this.rName = rName;
-        this.rType = rType;
-        this.quantity = quantity;
-        this.provider = provider;
-        this.rId = rId;
+    public String getrImg() {
+        return rImg;
+    }
+
+    public void setrImg(String rImg) {
+        this.rImg = rImg;
     }
 
     public Resource(String rName, String rType, int quantity, String provider) {

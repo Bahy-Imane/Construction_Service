@@ -28,17 +28,19 @@ public class AddProjectServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-//        String description = request.getParameter("description");
-//        Date startDate = Date.valueOf(request.getParameter("startDate"));
-//        Date endDate = Date.valueOf(request.getParameter("endDate"));
-//        double budget = Double.parseDouble(request.getParameter("budget"));
+        String description = request.getParameter("description");
+        Date startDate = Date.valueOf(request.getParameter("startDate"));
+        Date endDate = Date.valueOf(request.getParameter("endDate"));
+        double budget = Double.parseDouble(request.getParameter("budget"));
+        String img = request.getParameter("pImg");
 
         Project project = new Project();
         project.setpName(name);
-//        project.setpDescription(description);
-//        project.setpStartdate(startDate);
-//        project.setpEndDate(endDate);
-//        project.setBudget(budget);
+        project.setpDescription(description);
+        project.setpStartdate(startDate);
+        project.setpEndDate(endDate);
+        project.setBudget(budget);
+        project.setpImg(img);
 
         try {
             projectDao.addProject(project);

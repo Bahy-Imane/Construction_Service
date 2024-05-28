@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Mettre à jour une Tâche</title>
+    <title>Update Task</title>
     <style>
         body {
             background-color: black;
@@ -13,7 +14,10 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .navbar {
@@ -29,102 +33,159 @@
             color: white;
             text-decoration: none;
             padding: 14px 20px;
-
         }
 
         .navbar a:hover {
-            background-color: black;
+            background-color: #333;
         }
 
         .navbar .logo img {
             height: 65px;
+            border-radius: 50%;
         }
 
-        .navbar .nav-links {
+        h1 {
             display: flex;
-            margin-top: 10px;
-        }
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFD700;
+            color: #333;
             padding: 20px;
-            border: 1px solid #ddd;
+            width: fit-content;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            color: #FFD700;
+        }
+
+        form input {
+            padding: 10px;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            border: none;
+            width: 100%;
+            margin-bottom: 15px;
         }
-        .form-container h2 {
-            margin-top: 0;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
+
+        form input[type="submit"] {
+            background-color: #FFD700;
+            color: #333;
+            cursor: pointer;
             font-weight: bold;
         }
-        .form-group input[type="text"], .form-group input[type="date"], .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
+
+        form input[type="submit"]:hover {
+            background-color: #FFC300;
         }
-        .form-group button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            cursor: pointer;
+
+        footer {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            padding: 40px 20px;
+            background-color: #222;
+        }
+
+        footer .col {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        footer .col h3, footer .col p {
+            color: #EDBB38;
+            margin-bottom: 10px;
+        }
+
+        footer .col p {
+            color: white;
+        }
+
+        footer .social a {
+            color: white;
+            margin-right: 10px;
+        }
+
+        footer .social img {
+            height: 30px;
         }
     </style>
 </head>
 <body>
 <div class="navbar">
     <div class="logo">
-        <img style="border-radius: 50%; margin-top: 15px;" src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
+        <img src="https://i.pinimg.com/564x/b6/09/de/b609de84a01594a2a8d800a948c76168.jpg" width="140px" alt="Logo">
     </div>
     <div class="nav-links">
         <a href="${pageContext.request.contextPath}">Home</a>
-        <a href="${pageContext.request.contextPath}/ListTasksServlet?projectId=${projectId}">Tasks</a>
+        <a href="${pageContext.request.contextPath}/listProject">Projects</a>
     </div>
 </div>
 
-<div class="form-container">
-    <h2>Mettre à jour une Tâche</h2>
-    <form action="${pageContext.request.contextPath}/UpdateTaskServlet" method="POST">
+<h1>Update Task</h1>
+<form action="${pageContext.request.contextPath}/UpdateTaskServlet" method="POST" >
+    <input type="hidden" name="id" value="${task.id}"/>
 
-        <input type="hidden" name="projectId" value="${projectId}">
-        <input type="hidden" name="tId" value="${task.tId}">
-        <div class="form-group">
-            <label for="description">Description de la Tâche:</label>
-            <input type="text" id="description" name="tDescription" value="${task.tDescription}" required>
-        </div>
-        <div class="form-group">
-            <label for="startDate">Date de Début:</label>
-            <input type="date" id="startDate" name="tStartDate" value="${task.tStartdate}" required>
-        </div>
-        <div class="form-group">
-            <label for="endDate">Date de Fin:</label>
-            <input type="date" id="endDate" name="tEndDate" value="${task.tEndDate}" required>
-        </div>
-        <div class="form-group">
-            <label for="status">Statut:</label>
-            <select id="status" name="status" required>
-                <option value="A faire" ${task.statut == 'A faire' ? 'selected' : ''}>A faire</option>
-                <option value="En cours" ${task.statut == 'En cours' ? 'selected' : ''}>En cours</option>
-                <option value="Terminé" ${task.statut == 'Terminé' ? 'selected' : ''}>Terminé</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="resources">Ressources:</label>
-            <input type="text" id="resources" name="resources" value="${task.resources}" required>
-        </div>
-        <div class="form-group">
-            <button type="submit">Update Task</button>
-        </div>
-    </form>
-</div>
+    <label for="description">Task Description:</label>
+    <input type="text" id="description" name="description" value="${task.description}" required/>
 
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" value="${task.startDate}" required/>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" value="${task.endDate}" required/>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="To Do">To Do</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
+    </select>
+
+    <input type="submit" value="Update Task"/>
+</form>
+
+
+<footer id="footer">
+    <div class="col">
+        <h3>About us</h3>
+        <p>Our mission</p>
+        <p>Privacy Policy</p>
+        <p>Terms of service</p>
+    </div>
+    <div class="col">
+        <h3>Services</h3>
+        <p>Products</p>
+        <p>Join our team</p>
+        <p>Partner with us</p>
+    </div>
+    <div class="col">
+        <h3>Contact us</h3>
+        <div class="social">
+            <a href="https://codepen.io/Juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen">
+            </a>
+            <a href="https://twitter.com/juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/x.png" alt="Twitter">
+            </a>
+            <a href="https://youtube.com/@juxtopposed" target="_blank">
+                <img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube">
+            </a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
